@@ -2,36 +2,39 @@ package Stack;
 
 public class Stack<T>{
     private T[] stack;
+    private int top;
     private int capacity;
 
-    public Stack(T[] stack, int capacity){
+    public Stack(T[] stack, int capacity, int top){
         this.stack = stack;
         this.capacity = capacity;
+        this.top = 0;
     }
 
     int getSize(){
-        return stack.length;
+        return top;
     }
 
     boolean isEmpty(){
-        if(stack.length == 0){
+        if(top == 0){
             return true;
         }
         return false;
     }
 
     void push(T element){
-        if(stack.length - 1 == capacity){
+        if(top == capacity){
             throw new IndexOutOfBoundsException("Stack is full.");
         }
-        stack[stack.length]= element;
+        top++;
+        stack[top] = element;
     }
 
     T pop(){
         if(isEmpty()){
             throw new IllegalStateException("Stack has no element.");
         }
-        T value = stack[stack.length - 1];
+        T value = stack[top];
         return value;
     }
 
@@ -39,6 +42,6 @@ public class Stack<T>{
         if(isEmpty()){
             throw new IllegalStateException("Stack is empty.");
         }
-        return stack[stack.length - 1];
+        return stack[top];
     }
 }

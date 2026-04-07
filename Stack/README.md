@@ -7,10 +7,6 @@
     - size
     - isEmpty
 
-## Applications
-    - Parentheses Matching
-    - Reverse Polish Notation Calculator
-
 ## Time Complexity
     - push: O(1)
     - pop: O(1)
