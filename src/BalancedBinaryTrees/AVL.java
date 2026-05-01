@@ -13,6 +13,16 @@ public class AVL<T> {
         }
     }
 
+    class Pair<Integer, B>{
+        private int first;
+        private B second;
+
+        public Pair(int first, B second){
+            this.first = first;
+            this.second = second;
+        }
+    }
+
     int height(Node<T> p){
         if(p == null){
             return 0;
@@ -89,5 +99,36 @@ public class AVL<T> {
         return p;
     }
 
+    Pair<T, Node<T>> removeMin(Node<T> p){
+        if(p.left == null){
+            return new Pair<T, Node<T>>(p.value, p.right);
+        }else{
+            Pair<T, Node<T>> curr = removeMin(p.left);
+            p.left = curr.second;
+            updateHeight(p);
+            p = rebalance(p);
+            return new Pair<T, Node<T>>(curr.first, p);
+        }
+    }
 
+    Node<T> remove(Node<T> p, int x){
+        if(p == null){
+            return p;
+        }else if(x == p.value){
+            if(p.right == null){
+                return p.left;
+            }else{
+                Pair<T, Node<T>> m = removeMin(p.right);
+                p.value = m.first;
+                p.right = m.second;
+            }
+        }else if(x < p.value){
+            p.left = remove(p.left, x);
+        }else{
+            p.right = remove(p.right, x);
+        }
+        updateHeight(p);
+        p = rebalance(p);
+        return p;
+    }
 }

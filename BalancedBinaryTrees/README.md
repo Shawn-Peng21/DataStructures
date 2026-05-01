@@ -9,6 +9,8 @@
   - double_rotate_right
   - rebalance
   - insert
+  - removeMin
+  - remove
 
 # Time Complexity
   - height: O(1)
