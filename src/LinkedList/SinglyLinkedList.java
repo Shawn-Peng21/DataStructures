@@ -86,6 +86,7 @@ public class SinglyLinkedList<T> {
         Node<T> curr = head;
         while(j < i){
             curr = curr.next;
+            j++;
         }
 
         Node<T> newNode = new Node<>(element);
@@ -94,7 +95,7 @@ public class SinglyLinkedList<T> {
         size++;
     }
 
-    void romove(int i){
+    void remove(int i){
         if(i < 0 || i > size){
             throw new IllegalStateException("Index out of range.");
         }
@@ -108,6 +109,7 @@ public class SinglyLinkedList<T> {
         Node<T> curr = head;
         while(j < i){
             curr = curr.next;
+            j++;
         }
 
         curr.element = null;

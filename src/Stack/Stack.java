@@ -35,6 +35,9 @@ public class Stack<T>{
             throw new IllegalStateException("Stack has no element.");
         }
         T value = stack[top];
+
+        stack[top] = null;
+        top--;
         return value;
     }
 
